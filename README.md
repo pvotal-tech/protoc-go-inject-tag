@@ -44,6 +44,29 @@ message IP {
 }
 ```
 
+For oneof fields, a different syntax needs to be used. Add a comment with
+syntax `// @inject_tag_oneof: subfield_name: custom_tag:"custom_value"` for
+each sub-fields that required a tag.
+
+Example:
+
+```
+// file: test.proto
+syntax = "proto3";
+
+package pb;
+
+message IP {
+  // @inject_tag_oneof: Foo: validate:"required"
+  // @inject_tag_oneof: Bar: validate:"non-zero"
+  // @inject_tag: valid:"ip"
+  oneof data {
+    string Foo = 1;
+    uint32 Bar = 2;
+    string Baz = 3;
+}
+```
+
 Generate with protoc command as normal.
 
 ```

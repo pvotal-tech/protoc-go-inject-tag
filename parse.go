@@ -13,6 +13,15 @@ func tagFromComment(comment string) (tag string) {
 	return
 }
 
+func tagOneofFromComment(comment string) (name string, tag string) {
+	match := rOneofComment.FindStringSubmatch(comment)
+	if len(match) == 3 {
+		tag = match[2]
+		name = match[1]
+	}
+	return
+}
+
 type tagItem struct {
 	key   string
 	value string

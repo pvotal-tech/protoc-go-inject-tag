@@ -14,3 +14,18 @@ message URL {
   // @inject_tag: valid:"nonzero"
   int32 port = 3;
 }
+
+message FooBar {
+  message Foo {
+    int32 foo = 1;
+  }
+  message Bar {
+    string bar = 1;
+  }
+  // @inject_tag_oneof: Foo: validate:"non-zero"
+  oneof Data {
+    Foo foo = 2;
+    Bar bar = 3;
+  }
+}
+
