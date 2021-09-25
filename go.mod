@@ -1,4 +1,4 @@
-module github.com/3rein/protoc-go-inject-tag
+module github.com/pvotal-tech/protoc-go-inject-tag
 
 require (
 	github.com/golang/protobuf v1.1.0
